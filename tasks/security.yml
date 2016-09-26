@@ -1,0 +1,19 @@
+---
+
+# This will leave default 'user' group
+# <security-role>
+#           <role-name>my_sec_group</role-name>
+#           <role-name>user</role-name>
+#   </security-role>
+
+- name: Ensure security role group in web.xml
+  lineinfile:
+    dest: "{{ rundeck_home_dir }}/exp/webapp/WEB-INF/web.xml"
+    insertafter: '<security-role>$'
+    line: "\t\t<role-name>{{ rundeck_security_role }}</role-name>"
+  notify:
+    - restart rundeck
+  tags:
+    - rundeck
+    - configuration
+    - security

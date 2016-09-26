@@ -105,6 +105,9 @@
 - include: crowd.yml
   when: rundeck_crowd == True
 
+# security settings
+- include: security.yml
+
 # extras
 - name: download rundeck plugins
   get_url: >

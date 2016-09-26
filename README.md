@@ -51,7 +51,7 @@ The following variables can be overridden:
  * `rundeck_crowd_proxy_username`: Default: Undefined
  * `rundeck_crowd_proxy_password`: Default: Undefined
  * `rundeck_crowd_debug`: Default: False. Enable/Disable Crowd auth debugging
-
+ * `rundeck_security_role`: Default: 'user'. Sets required role for users to login.
 ## Dependencies
 This role does not have a hard dependency on any other role to deploy but rundeck does require java to be installed (decoupled on the communities request). smola's [ansible-java-role](https://github.com/smola/ansible-java-role) is a good choice with the
 following configuration:

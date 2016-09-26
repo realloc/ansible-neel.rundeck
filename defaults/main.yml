@@ -45,5 +45,6 @@ rundeck_crowd_jaas_jars:
   - https://github.com/realloc/crowd-jaas/releases/download/v0.0.1/jersey-core-1.18.1.jar
   - https://github.com/realloc/crowd-jaas/releases/download/v0.0.1/slf4j-api-1.7.7.jar
   - https://github.com/realloc/crowd-jaas/releases/download/v0.0.1/slf4j-simple-1.7.7.jar
+rundeck_security_role: 'user'
 # OS, kept for backward compatibility, use rundeck_download_path instead.
 temp_dir: /tmp
