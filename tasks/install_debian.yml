@@ -50,7 +50,7 @@
     allow_unauthenticated: yes #FIXME: https://github.com/rundeck/rundeck/issues/93
   notify:
     - systemd daemon-reload
-    - restart rundeck
+    - start rundeck
   tags:
     - rundeck
     - install
@@ -104,6 +104,12 @@
     - rundeck
     - install
     - packages
+
+- name: Rundeck | add systemd service unit symlink
+  file:
+    src: /etc/systemd/system/rundeckd.service
+    dest: /etc/systemd/system/multi-user.target.wants/rundeckd.service
+    state: link
 
 - name: Rundeck | ensure service log directory has correct ownership
   file:
