@@ -56,6 +56,13 @@
     - install
     - packages
 
+- name: Rundeck | Check rundeck user default shell
+  user:
+    name: rundeck
+    shell: /bin/bash
+  notify:
+    - restart rundeck
+
 - name: Rundeck | check upstart configuration exists
   register: upstart_config
   stat:
