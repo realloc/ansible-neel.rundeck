@@ -36,7 +36,7 @@
 
 - name: Rundeck | Add Rundeck APT repository on Bintray
   apt_repository:
-    repo: 'deb http://dl.bintray.com/rundeck/rundeck-deb /'
+    repo: 'deb https://dl.bintray.com/rundeck/rundeck-deb /'
     filename: rundeck
   tags:
     - rundeck
@@ -45,12 +45,20 @@
 
 - name: Rundeck | install from APT repository
   apt:
-    name: rundeck
+    name: "rundeck={{ rundeck_version }}"
     state: present
-    allow_unauthenticated: yes #FIXME: https://github.com/rundeck/rundeck/issues/93
   notify:
     - systemd daemon-reload
     - start rundeck
+  tags:
+    - rundeck
+    - install
+    - packages
+
+- name: Rundeck | install CLI tools from APT repository
+  apt:
+    name: rundeck-cli
+    state: present
   tags:
     - rundeck
     - install

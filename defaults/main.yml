@@ -1,5 +1,6 @@
 ---
 # Rundeck
+rundeck_version: "2.7.1"
 rundeck_download_path: "{{ temp_dir }}"
 rundeck_protocol: "http"  # the protocol that the web application is accessed by.
 rundeck_domain: "localhost:4440"  # the domain that the web application is associated with.
