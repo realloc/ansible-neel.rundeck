@@ -108,6 +108,10 @@
 # security settings
 - include: security.yml
 
+# optional API token for admin access with RD CLI
+- include: api_token.yml
+  when: rundeck_admin_token_kludge == True
+
 # extras
 - name: download rundeck plugins
   get_url: >

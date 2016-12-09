@@ -1,0 +1,27 @@
+---
+
+- name: Ensure tokens.properties permissions
+  copy:
+    content: "{{ rundeck_admin_token_user }}: {{ rundeck_admin_token }}\n"
+    dest: /etc/rundeck/tokens.properties
+    owner: rundeck
+    group: rundeck
+    mode: 0600
+  notify:
+    - restart rundeck
+  tags:
+    - rundeck
+    - configuration
+    - token_kludge
+
+- name: Ensure tokens.file is set
+  lineinfile:
+    dest: "{{ rundeck_conf_dir }}/framework.properties"
+    line: 'rundeck.tokens.file=/etc/rundeck/tokens.properties'
+  notify:
+    - restart rundeck
+  tags:
+    - rundeck
+    - configuration
+    - token_kludge
+
