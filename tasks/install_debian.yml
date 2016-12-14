@@ -92,6 +92,19 @@
     - install
     - packages
 
+- name: Rundeck | replace profile helper
+  copy:
+    src: systemd/profile
+    dest: /etc/rundeck/profile
+    owner: rundeck
+    group: rundeck
+    mode: 0640
+  when: ansible_service_mgr == 'systemd'
+  tags:
+    - rundeck
+    - install
+    - packages
+
 - name: Rundeck | add systemd service helper
   copy:
     src: systemd/rundeck-start
